@@ -49,56 +49,119 @@ def readImg(file, threshold):
     
     return x
 
+def array2img_single(x):
+    y = np.zeros(x.shape)
+    y[x == 1] = 255
+    y[x == -1] = 0
+
+    plt.imshow(y)
+    plt.show()
+
+def array2img_noise(test_data, predict_data):
+    test_image = []
+    for img in test_data:
+        y = np.zeros(img.shape)
+        y[img == 1] = 255
+        y[img == -1] = 0
+
+        test_image.append(Image.fromarray(y))
+
+    predict_image = []
+    for img in predict_data:
+        y = np.zeros(img.shape)
+        y[img == 1] = 255
+        y[img == -1] = 0
+
+        predict_image.append(Image.fromarray(y))
+
+    # Single Image
+    # figure, axis = plt.subplots(1, 2)
+    # axis[0].imshow(test_image[0])
+    # axis[0].set_title("Test Image")
+    # axis[1].imshow(predict_image[0])
+    # axis[1].set_title("Predict Image")
+
+    if len(test_image) < 6:
+        figure, axis = plt.subplots(5, 2)
+        axis[0][0].imshow(test_image[0])
+        axis[0][0].set_title("Test Image")
+        axis[0][1].imshow(predict_image[0])
+        axis[0][1].set_title("Predict Image")
+        axis[1][0].imshow(test_image[1])
+        axis[1][0].set_title("Test Image")
+        axis[1][1].imshow(predict_image[1])
+        axis[1][1].set_title("Predict Image")
+        axis[2][0].imshow(test_image[2])
+        axis[2][0].set_title("Test Image")
+        axis[2][1].imshow(predict_image[2])
+        axis[2][1].set_title("Predict Image")
+        axis[3][0].imshow(test_image[3])
+        axis[3][0].set_title("Test Image")
+        axis[3][1].imshow(predict_image[3])
+        axis[3][1].set_title("Predict Image")
+        axis[4][0].imshow(test_image[4])
+        axis[4][0].set_title("Test Image")
+        axis[4][1].imshow(predict_image[4])
+        axis[4][1].set_title("Predict Image")
+    else:
+        figure, axis = plt.subplots(6, 2)
+        axis[0][0].imshow(test_image[0])
+        axis[0][0].set_title("Test Image")
+        axis[0][1].imshow(predict_image[0])
+        axis[0][1].set_title("Predict Image")
+        axis[1][0].imshow(test_image[1])
+        axis[1][0].set_title("Test Image")
+        axis[1][1].imshow(predict_image[1])
+        axis[1][1].set_title("Predict Image")
+        axis[2][0].imshow(test_image[2])
+        axis[2][0].set_title("Test Image")
+        axis[2][1].imshow(predict_image[2])
+        axis[2][1].set_title("Predict Image")
+        axis[3][0].imshow(test_image[3])
+        axis[3][0].set_title("Test Image")
+        axis[3][1].imshow(predict_image[3])
+        axis[3][1].set_title("Predict Image")
+        axis[4][0].imshow(test_image[4])
+        axis[4][0].set_title("Test Image")
+        axis[4][1].imshow(predict_image[4])
+        axis[4][1].set_title("Predict Image")
+        axis[5][0].imshow(test_image[5])
+        axis[5][0].set_title("Test Image")
+        axis[5][1].imshow(predict_image[5])
+        axis[5][1].set_title("Predict Image")
+    plt.show()
+
+    return None
+
 def array2img(test_data, predict_data):
-    y = np.zeros(test_data[0].shape)
-    y[test_data[0] == 1] = 255
-    y[test_data[0] == -1] = 0
+    test_image = []
+    for img in test_data:
+        y = np.zeros(img.shape)
+        y[img == 1] = 255
+        y[img == -1] = 0
 
-    test_img_0 = Image.fromarray(y)
+        test_image.append(Image.fromarray(y))
 
-    y = np.zeros(test_data[0].shape)
-    y[test_data[1] == 1] = 255
-    y[test_data[1] == -1] = 0
+    predict_image = []
+    for img in predict_data:
+        y = np.zeros(img.shape)
+        y[img == 1] = 255
+        y[img == -1] = 0
 
-    test_img_1 = Image.fromarray(y)
-
-    y = np.zeros(test_data[0].shape)
-    y[test_data[2] == 1] = 255
-    y[test_data[2] == -1] = 0
-
-    test_img_2 = Image.fromarray(y)
-
-    y = np.zeros(predict_data[0].shape)
-    y[predict_data[0] == 1] = 255
-    y[predict_data[0] == -1] = 0
-
-    predict_img_0 = Image.fromarray(y)
-
-    y = np.zeros(predict_data[0].shape)
-    y[predict_data[1] == 1] = 255
-    y[predict_data[1] == -1] = 0
-
-    predict_img_1 = Image.fromarray(y)
-
-    y = np.zeros(predict_data[0].shape)
-    y[predict_data[2] == 1] = 255
-    y[predict_data[2] == -1] = 0
-
-    predict_img_2 = Image.fromarray(y)
-
+        predict_image.append(Image.fromarray(y))
 
     figure, axis = plt.subplots(3, 2)
-    axis[0][0].imshow(test_img_0)
+    axis[0][0].imshow(test_image[0])
     axis[0][0].set_title("Test Image")
-    axis[0][1].imshow(predict_img_0)
+    axis[0][1].imshow(predict_image[0])
     axis[0][1].set_title("Predict Image")
-    axis[1][0].imshow(test_img_1)
+    axis[1][0].imshow(test_image[1])
     axis[1][0].set_title("Test Image")
-    axis[1][1].imshow(predict_img_1)
+    axis[1][1].imshow(predict_image[1])
     axis[1][1].set_title("Predict Image")
-    axis[2][0].imshow(test_img_2)
+    axis[2][0].imshow(test_image[2])
     axis[2][0].set_title("Test Image")
-    axis[2][1].imshow(predict_img_2)
+    axis[2][1].imshow(predict_image[2])
     axis[2][1].set_title("Predict Image")
     plt.show()
     
@@ -128,13 +191,23 @@ def update(w, y_vec, theta=0.5, time=100):
     
     return y_vec
 
-
+# With cat
+# training_files = ['files/bin_image1.gif', 
+#                 'files/bin_image2.gif',
+#                 'files/bin_image3.gif', 
+#                 'files/bin_image4.gif', 
+#                 'files/bin_image5.gif',
+#                 'files/cat-resized.png']
+# Without cat
 training_files = ['files/bin_image1.gif', 
                 'files/bin_image2.gif',
                 'files/bin_image3.gif', 
                 'files/bin_image4.gif', 
                 'files/bin_image5.gif']
-test_files = ['files/bin_corr1.gif', 'files/bin_corr2.gif', 'files/bin_corr3.gif']
+# training_files = ['files/cat-resized.png']               
+test_files = ['files/bin_corr1.gif', 
+            'files/bin_corr2.gif', 
+            'files/bin_corr3.gif']
 
 
 
@@ -142,6 +215,7 @@ def hopfield(training_files, test_files, theta=0.5, iteration=50000):
     x_array = []
     y_array = []
     predicted_array = []
+    noise_img = []
     w = None
 
     print("Training Weight Matrix")
@@ -152,7 +226,10 @@ def hopfield(training_files, test_files, theta=0.5, iteration=50000):
 
         # Add to Array for display
         x_array.append(x)
+        x_noise = addNoise(x)
+        noise_img.append(x_noise)
 
+        # Add Noise to Image
         x_vec = mat2vec(x)
         if w is None:
             w = create_W(x_vec)
@@ -175,12 +252,51 @@ def hopfield(training_files, test_files, theta=0.5, iteration=50000):
         y_vec_result = y_vec_result.reshape(y_img_shape)
 
         predicted_array.append(y_vec_result)
-
+    
     array2img(y_array, predicted_array)
 
+    y_noise_array = []
+    predicted_noise_array = []
+    itr = 1
+    for img in noise_img:
+        print("Noise Image:", itr)
+        itr += 1
+        # Test Images
+        y = img
+
+        y_noise_array.append(y)
+
+        y_img_shape = y.shape
+
+        y_vec = mat2vec(y)
+        y_vec_result = update(w, y_vec, theta, iteration)
+        y_vec_result = y_vec_result.reshape(y_img_shape)
+
+        predicted_noise_array.append(y_vec_result)
+
+    array2img_noise(y_noise_array, predicted_noise_array)
+
+def addNoise(x):
+    noise = np.zeros([x.shape[0], x.shape[1]])
+    for i in range(x.shape[0]):
+        for j in range(x.shape[1]):
+            random = np.random.randint(10)
+            if random == 1:
+                if x[i][j] > 0:
+                    noise[i][j] = -1
+                elif x[i][j] < 0:
+                    noise[i][j] = 1
+            else:
+                noise[i][j] = x[i][j]
+    
+    # array2img_single(noise)
+
+    return noise
+    
+    
 
 if __name__ == '__main__':
-    hopfield(training_files, test_files, 0.8, 1000)
+    hopfield(training_files, test_files, 0.8, 100000)
 
 
 
